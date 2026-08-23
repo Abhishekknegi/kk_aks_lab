@@ -4,7 +4,7 @@
 #}
 
 data "azurerm_resource_group" "res-0" {
-  name = "kml_rg_main-e2da110263a84b90"
+  name = "kml_rg_main-19d2f0ed17474c04"
 }
 resource "azurerm_kubernetes_cluster" "res-1" {
   automatic_upgrade_channel    = "patch"
