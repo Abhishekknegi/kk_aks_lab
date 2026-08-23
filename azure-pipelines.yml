@@ -19,6 +19,7 @@ steps:
     backendServiceArm: 'kk_spn_aks'
     backendAzureRmStorageAccountName: 'sabackendkkdev01'
     backendAzureRmContainerName: 'backend'
+    backendAzureRmKey: 'aks-lab.tfstate'
 
 - task: TerraformTask@5
   displayName: 'Terraform Validate'
