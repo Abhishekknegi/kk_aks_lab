@@ -1,5 +1,3 @@
-# Azure DevOps Terraform Pipeline
-
 trigger:
 - main
 
@@ -8,13 +6,11 @@ pool:
 
 steps:
 
-# Install Terraform
 - task: TerraformInstaller@1
   displayName: 'Install Terraform'
   inputs:
     terraformVersion: 'latest'
 
-# Terraform Init
 - task: TerraformTask@5
   displayName: 'Terraform Init'
   inputs:
@@ -24,25 +20,15 @@ steps:
     backendAzureRmStorageAccountName: 'sabackendkkdev01'
     backendAzureRmContainerName: 'backend'
 
-# Terraform Validate
 - task: TerraformTask@5
   displayName: 'Terraform Validate'
   inputs:
     provider: 'azurerm'
     command: 'validate'
 
-# Terraform Plan
 - task: TerraformTask@5
   displayName: 'Terraform Plan'
   inputs:
     provider: 'azurerm'
     command: 'plan'
-    environmentServiceNameAzureRM: 'kk_spn_aks'
-
-# Terraform Apply
-- task: TerraformTask@5
-  displayName: 'Terraform Apply'
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
     environmentServiceNameAzureRM: 'kk_spn_aks'
