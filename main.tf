@@ -1,6 +1,6 @@
 #resource "azurerm_resource_group" "res-0" {
 #  location = "eastus"
-#  name     = "kml_rg_main-316706ce42474224"
+#  name     = "kml_rg_main-19d2f0ed17474c04"
 #}
 
 data "azurerm_resource_group" "res-0" {
