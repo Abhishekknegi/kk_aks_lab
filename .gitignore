@@ -1,0 +1,48 @@
+# ==========================================
+# Terraform
+# ==========================================
+
+# Terraform provider/plugin cache
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+*.tfstate.backup
+
+# Terraform crash logs
+crash.log
+crash.*.log
+
+
+# ==========================================
+# Terraform Export / Backup Files
+# ==========================================
+
+# Azure Terraform Export files
+aztfexportSkippedResources.txt
+aztfexportResourceMapping.json
+
+# Terraform backup files
+*.tf-bk
+*.tf-backup
+*.tf.bak
+
+# Backup/copy Terraform files
+*- Copy.tf
+*- Copy.tf-bk
+
+
+# ==========================================
+# IDE / Editor
+# ==========================================
+
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
