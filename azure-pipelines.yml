@@ -1,7 +1,4 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+# Azure DevOps Terraform Pipeline
 
 trigger:
 - main
@@ -10,15 +7,42 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+
+# Install Terraform
 - task: TerraformInstaller@1
+  displayName: 'Install Terraform'
   inputs:
     terraformVersion: 'latest'
-- task:
+
+# Terraform Init
 - task: TerraformTask@5
+  displayName: 'Terraform Init'
   inputs:
     provider: 'azurerm'
     command: 'init'
     backendServiceArm: 'kk_spn_aks'
     backendAzureRmStorageAccountName: 'sabackendkkdev01'
     backendAzureRmContainerName: 'backend'
-    
+
+# Terraform Validate
+- task: TerraformTask@5
+  displayName: 'Terraform Validate'
+  inputs:
+    provider: 'azurerm'
+    command: 'validate'
+
+# Terraform Plan
+- task: TerraformTask@5
+  displayName: 'Terraform Plan'
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'kk_spn_aks'
+
+# Terraform Apply
+- task: TerraformTask@5
+  displayName: 'Terraform Apply'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'kk_spn_aks'
